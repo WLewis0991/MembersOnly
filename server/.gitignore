@@ -1,0 +1,30 @@
+# dependencies
+
+node_modules/
+
+# build output
+
+dist/
+
+# environment variables (never commit these)
+
+.env
+.env.*
+
+# logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# editor
+
+.vscode/
+.idea/
+
+# typescript
+
+*.tsbuildinfo
