@@ -2,6 +2,8 @@ import express from 'express';
 import type { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import pool from './db';
+
 
 dotenv.config();
 
@@ -15,6 +17,9 @@ app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', message: 'Server is healthy 🟢' });
 });
 
+pool.query('SELECT 1')
+
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on ${PORT}`)
-})
+  console.log(`🚀 Server is running on ${PORT}`);
+});
