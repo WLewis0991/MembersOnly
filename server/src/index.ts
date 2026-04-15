@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import pool from './config/db';
 
 
+
 dotenv.config();
 
 const app: Application = express();
@@ -18,6 +19,10 @@ app.get('/api/health', (_req: Request, res: Response) => {
 });
 
 pool.query('SELECT 1')
+
+//Routes
+app.get('/api/auth')
+app.get('api/messages, me')
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on ${PORT}`);
