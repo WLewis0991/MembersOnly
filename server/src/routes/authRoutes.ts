@@ -2,22 +2,7 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import db from "../config/db"
-
-interface Users {
-  id: number;
-  username: string;
-  password: string;
-}
-
-interface RegisterBody {
-  username: string;
-  password: string;
-}
-
-interface LoginBody {
-  username: string;
-  password: string;
-}
+import { Users, RegisterBody, LoginBody } from "../types/authTypes";
 
 const router = express.Router();
 
