@@ -3,6 +3,7 @@ import type { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import pool from './config/db';
+import authRoutes from './routes/authRoutes'
 
 
 
@@ -21,8 +22,8 @@ app.get('/api/health', (_req: Request, res: Response) => {
 pool.query('SELECT 1')
 
 //Routes
-app.get('/api/auth')
-app.get('api/messages, me')
+app.use('/auth', authRoutes)
+//app.use('api/messages, ')
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on ${PORT}`);
