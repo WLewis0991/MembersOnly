@@ -18,3 +18,12 @@ Content-Type: application/json
     "username" : "will@gmail.com",
     "password" : "password123"
 }
+
+### ADD MESSAGE 
+POST http://localhost:3000/api/messages
+Content-Type: application/json
+Authorization: Bearer 703fe356e6f6bca48c8aeb2910cf556a81f4dce2efe61633834e48433e60743a7234cdf55fcdb2fa0d7774a603007d8633234a008ff17b22bc3db3e4b9aa9c8b
+
+{
+    "message": "Testing"
+}

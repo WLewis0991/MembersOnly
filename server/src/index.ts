@@ -3,8 +3,8 @@ import type { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import pool from './config/db';
-import authRoutes from './routes/authRoutes'
-
+import authRoutes from './routes/authRoutes';
+import messageRoutes from './routes/messageRoutes';
 
 
 dotenv.config();
@@ -23,7 +23,7 @@ pool.query('SELECT 1')
 
 //Routes
 app.use('/auth', authRoutes)
-//app.use('api/messages, ')
+app.use('/api/messages', messageRoutes)
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on ${PORT}`);
