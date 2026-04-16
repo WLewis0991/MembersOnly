@@ -1,9 +1,23 @@
 import express from "express";
 import { authMiddleware } from "../middleware/auth";
 import db from "../config/db";
-import type { NewMessage } from "../types/messageTypes";
+import type { NewMessage, Messages } from "../types/messageTypes";
+import pool from "../config/db";
 
 const router = express.Router();
+
+// GET all messages
+router.get('/', async (req, res) => {
+  try {
+    const result = await pool.query<Messages>(
+      'SELECT * FROM messages ORDER BY created_at DESC'
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch messages' });
+  }
+});
 
 router.post("/", authMiddleware, async (req, res) => {
   const { message } = req.body as NewMessage;

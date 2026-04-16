@@ -9,12 +9,14 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<MessageBoard />} />
-          <Route path="/log-in" element={<Login />} /> 
-          <Route path="/register" element={<Register />} />
-        </Routes>
+      <div className="flex flex-col h-dvh w-full bg-gray-200">
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<MessageBoard />} />
+            <Route path="/log-in" element={<Login />} /> 
+            <Route path="/register" element={<Register />} />
+          </Routes>
+      </div>
     </BrowserRouter>
     </>
   )
