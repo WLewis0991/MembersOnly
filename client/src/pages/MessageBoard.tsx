@@ -5,7 +5,7 @@
  export default function MessageBoard(){
 
     const [messages, setMessages] = useState<Message[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
 
     const API_URL = import.meta.env.VITE_API_URL

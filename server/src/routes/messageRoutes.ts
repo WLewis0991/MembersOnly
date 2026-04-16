@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query<Messages>(
-      'SELECT * FROM messages ORDER BY created_at DESC'
+      'SELECT messages.*, users.username FROM messages JOIN users ON users.id = messages.user_id ORDER BY created_at DESC'
     );
     res.json(result.rows);
   } catch (err) {

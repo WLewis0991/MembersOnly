@@ -9,6 +9,7 @@ export type JwtPayload = {
 
 export type Messages= {
   id: number;
+  username: string;
   user_id: string;
   message: string;
   create_at: string;
