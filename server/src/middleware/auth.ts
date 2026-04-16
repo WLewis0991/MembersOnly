@@ -32,7 +32,6 @@ export function authMiddleware(
 
 try {
   const decoded = JWT.verify(token, JWT_SECRET!) as AuthUser;
-  console.log("[auth] decoded token:", decoded); // 👈 check server terminal
   req.user = decoded;
 } catch (err) {
     req.user = null;
