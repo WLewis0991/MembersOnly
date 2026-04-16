@@ -1,10 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import JWT, { JwtPayload, TokenExpiredError, JsonWebTokenError } from "jsonwebtoken";
+import JWT, { TokenExpiredError, JsonWebTokenError } from "jsonwebtoken";
+import type { AuthUser } from "../types/authTypes";
 
-interface AuthUser extends JwtPayload {
-  id: string;
-  email: string;
-}
 
 declare global {
   namespace Express {
@@ -33,9 +30,11 @@ export function authMiddleware(
 
   const token = authHeader.slice(7);
 
-  try {
-    req.user = JWT.verify(token, JWT_SECRET!) as unknown as AuthUser;
-  } catch (err) {
+try {
+  const decoded = JWT.verify(token, JWT_SECRET!) as AuthUser;
+  console.log("[auth] decoded token:", decoded); // 👈 check server terminal
+  req.user = decoded;
+} catch (err) {
     req.user = null;
 
     if (process.env.NODE_ENV !== "production") {

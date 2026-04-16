@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import db from "../config/db"
-import { Users, RegisterBody, LoginBody } from "../types/authTypes";
+import { User, RegisterBody, LoginBody } from "../types/authTypes";
 
 const router = express.Router();
 
@@ -56,7 +56,7 @@ router.post("/login", async (req: Request<{}, {}, LoginBody>, res: Response) => 
       `SELECT * FROM "users" WHERE username = $1`,
       [username]
     );
-    const user = userResult.rows[0] as Users | undefined;
+    const user = userResult.rows[0] as User | undefined;
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });

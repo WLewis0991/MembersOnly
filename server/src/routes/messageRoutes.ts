@@ -7,7 +7,12 @@ const router = express.Router();
 
 router.post("/", authMiddleware, async (req, res) => {
   const { message } = req.body as NewMessage;
-  const userId = (req as any).userId as number;
+
+  const userId = req.user?.userId ?? null;
+
+  if (!userId) {
+    return res.status(401).json({ error: "Missing userId from token" });
+  }
 
   const result = await db.query<{ id: number }>(
     `INSERT INTO messages (user_id, message)
