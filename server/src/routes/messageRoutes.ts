@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query<Messages>(
-      'SELECT messages.*, users.username FROM messages JOIN users ON users.id = messages.user_id ORDER BY created_at DESC'
+      'SELECT message_board.*, users.username FROM message_board JOIN users ON users.id = message_board.user_id ORDER BY created_at DESC'
     );
     res.json(result.rows);
   } catch (err) {
@@ -29,7 +29,7 @@ router.post("/", authMiddleware, async (req, res) => {
   }
 
   const result = await db.query<{ id: number }>(
-    `INSERT INTO messages (user_id, message)
+    `INSERT INTO message_board (user_id, message)
      VALUES ($1, $2)
      RETURNING id`,
     [userId, message]
