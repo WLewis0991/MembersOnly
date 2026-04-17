@@ -10,6 +10,9 @@
 
     const API_URL = import.meta.env.VITE_API_URL
 
+    const token = localStorage.getItem("token");
+    const isLoggedIn = !!token;
+
       const fetchMessages = async (): Promise<void> => {
     try {
       const res = await fetch(`${API_URL}/api/messages`)
@@ -33,8 +36,7 @@
 
 
     return(<>
-        <div className="flex flex-col items-center justify-center ">
-            <h1> Members Only 🔐</h1>
+        <div className="flex flex-col items-center justify-center">
                   <section className="posts">
                     <h2>All Posts</h2>
                     {loading && <p className="status">Loading posts...</p>}
@@ -43,7 +45,11 @@
                     <p className="status">No messages yet. Be the first!</p>
                     )}
                     {messages.map((message: Message) => (
-                    <MessageCard key={message.id} {...message} />
+                      <MessageCard 
+                        key={message.id} 
+                        {...message} 
+                        isLoggedIn={isLoggedIn} 
+                      />
                     ))}
                 </section>
             

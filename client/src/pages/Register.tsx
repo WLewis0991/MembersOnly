@@ -40,7 +40,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className=" flex mt-20 justify-center bg-white">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm flex flex-col gap-3"

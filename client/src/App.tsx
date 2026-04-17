@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <div className="flex flex-col h-dvh w-full bg-gray-200">
+      <div className="flex flex-col h-dvh w-full bg-white">
         <Navbar />
           <Routes>
             <Route path="/" element={<MessageBoard />} />
