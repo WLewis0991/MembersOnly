@@ -64,8 +64,7 @@ export default function MessageBoard() {
         {isLoggedIn && (
           <form
             onSubmit={handlePostMessage}
-            className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 p-5 w-full"
-          >
+            className="p-2 flex flex-col sm:flex-row gap-2 w-full max-w-2xl"          >
             <input
               className="border border-gray-300 p-2 rounded w-full"
               type="text"
@@ -76,7 +75,7 @@ export default function MessageBoard() {
 
             <button
               type="submit"
-              className="bg-blue-500 text-white rounded p-2 hover:bg-gray-700 disabled:opacity-50 transition-colors w-full sm:w-auto"
+              className="bg-blue-500 text-white rounded p-3 hover:bg-gray-700 disabled:opacity-50 transition-colors w-full sm:w-auto"
             >
               Post
             </button>
