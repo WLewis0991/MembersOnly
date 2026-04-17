@@ -6,6 +6,8 @@ export default function Register() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
+    fullname: "",
+    email: "",
   });
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [error, setError] = useState("");
@@ -47,10 +49,25 @@ export default function Register() {
       >
         <h1 className="text-xl font-medium text-gray-900 mb-2">Register</h1>
         <input
+          name="fullname"
+          value={formData.fullname}
+          onChange={handleChange}
+          placeholder="Fullname"
+          className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md outline-none focus:border-gray-400 transition-colors placeholder:text-gray-400"
+        />
+        <input
           name="username"
           value={formData.username}
           onChange={handleChange}
           placeholder="Username"
+          className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md outline-none focus:border-gray-400 transition-colors placeholder:text-gray-400"
+        />
+        <input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="E-Mail"
           className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md outline-none focus:border-gray-400 transition-colors placeholder:text-gray-400"
         />
         <input
