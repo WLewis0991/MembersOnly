@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { register } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -64,10 +64,17 @@ export default function Register() {
         <button
           type="submit"
           disabled={isAuthenticating}
-          className="w-full py-2 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-700 disabled:opacity-50 transition-colors mt-1"
+          className="w-full py-2 text-sm font-medium text-white bg-blue-400 rounded-md hover:bg-gray-700 disabled:opacity-50 transition-colors mt-1"
         >
           {isAuthenticating ? "Loading..." : "Register"}
         </button>
+        <Link
+        to="/"
+        className="w-full py-2 text-sm font-medium text-center text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
+        >
+        Go Home
+        </Link>
+
         {error && <p className="text-sm text-red-500">{error}</p>}
       </form>
     </div>

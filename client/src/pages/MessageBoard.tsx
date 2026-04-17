@@ -51,27 +51,33 @@ export default function MessageBoard() {
       if (!res.ok) throw new Error("Failed to post message");
 
       setNewMessage("");
-      fetchMessages(); // refresh list
+      fetchMessages();
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <section className="posts">
-        <h2>All Posts</h2>
+    <div className="flex flex-col items-center justify-center px-4 w-full">
+      <section className="w-full max-w-3xl">
 
         {isLoggedIn && (
-          <form onSubmit={handlePostMessage} className="mb-4">
+          <form
+            onSubmit={handlePostMessage}
+            className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 p-5 w-full"
+          >
             <input
-              className="border p-2 rounded"
+              className="border border-gray-300 p-2 rounded w-full"
               type="text"
               placeholder="Write a message..."
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
             />
-            <button type="submit" className="ml-2">
+
+            <button
+              type="submit"
+              className="bg-blue-500 text-white rounded p-2 hover:bg-gray-700 disabled:opacity-50 transition-colors w-full sm:w-auto"
+            >
               Post
             </button>
           </form>
